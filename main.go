@@ -2,7 +2,6 @@ package main
 
 import (
 	"context"
-	"fmt"
 	"github.com/eatmoreapple/openwechat"
 	"github.com/sashabaranov/go-openai"
 )
@@ -13,7 +12,6 @@ func main() {
 	dispatcher.OnText(func(ctx *openwechat.MessageContext) {
 		msg := ctx.Message
 		if (msg.IsSendByGroup() && msg.IsAt()) || !msg.IsSendByGroup() {
-			fmt.Println("消息: ", msg.Content)
 			gptResp := ChatCompletion(msg.Content)
 			msg.ReplyText(gptResp)
 		}
