@@ -18,10 +18,8 @@ func main() {
 			msg.ReplyText(gptResp)
 		}
 	}) // 只处理消息类型为文本类型的消息
-	// 注册消息处理函数
-	bot.MessageHandler = dispatcher.AsMessageHandler()
-	// 注册登陆二维码回调
-	bot.UUIDCallback = openwechat.PrintlnQrcodeUrl
+	bot.MessageHandler = dispatcher.AsMessageHandler()                  // 注册消息处理函数
+	bot.UUIDCallback = openwechat.PrintlnQrcodeUrl                      // 注册登陆二维码回调
 	reloadStorage := openwechat.NewFileHotReloadStorage("storage.json") // 创建热存储容器对象
 	defer reloadStorage.Close()
 	bot.HotLogin(reloadStorage, openwechat.NewRetryLoginOption()) // 执行热登录，热登录有一点缺点就是它的有效期很短（具体多久我也不知道），但是好像一直有消息收发就不会过期
