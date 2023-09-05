@@ -36,6 +36,7 @@ func ChatCompletion(content string) string {
 			},
 		},
 	}
+	//您可以在 https://chat.oldwei.com 免费注册以获取 API 密钥。
 	config := openai.DefaultConfig("sk-xxx")
 	config.BaseURL = "https://api.chat.oldwei.com/v1"
 	client := openai.NewClientWithConfig(config)
