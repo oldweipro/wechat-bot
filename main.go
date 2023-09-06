@@ -15,6 +15,7 @@ func main() {
 			gptResp := ChatCompletion(msg.Content)
 			msg.ReplyText(gptResp)
 		}
+		msg.AsRead()
 	}) // 只处理消息类型为文本类型的消息
 	bot.MessageHandler = dispatcher.AsMessageHandler()                  // 注册消息处理函数
 	bot.UUIDCallback = openwechat.PrintlnQrcodeUrl                      // 注册登陆二维码回调
